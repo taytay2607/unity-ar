@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 914616387}
   m_Layer: 0
   m_Name: TileManager
-  m_TagString: Untagged
+  m_TagString: TileManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -285,6 +285,7 @@ MonoBehaviour:
   target: {fileID: 1583252701}
   texture: {fileID: 0}
   service: {fileID: 230149335}
+  turretManager: {fileID: 1285553800}
 --- !u!4 &914616388
 Transform:
   m_ObjectHideFlags: 0
@@ -297,6 +298,49 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1285553799
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1285553801}
+  - component: {fileID: 1285553800}
+  m_Layer: 0
+  m_Name: Turret Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1285553800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1285553799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c6748460d261c44387d0e187ed3ae4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waitSpawnTime: 5
+  minIntervalTime: 5
+  maxIntervalTime: 15
+--- !u!4 &1285553801
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1285553799}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -420.50977, y: -518.437, z: 948.96704}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1285912278
 GameObject:
