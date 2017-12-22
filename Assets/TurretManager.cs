@@ -15,11 +15,12 @@ public class TurretManager : MonoBehaviour
     void Start()
     {
         tileManager = GameObject.FindGameObjectWithTag("TileManager").GetComponent<TileManager>();
+        SetupTurret();
     }
 
     void Update()
     {
-        if (waitSpawnTime < Time.time)
+        /*if (waitSpawnTime < Time.time && turrets.Count<=3)
         {
             waitSpawnTime = Time.time + UnityEngine.Random.Range(minIntervalTime, maxIntervalTime);
             SpawnTurret();
@@ -38,7 +39,7 @@ public class TurretManager : MonoBehaviour
                     KeepTurret(turret.turretType);
                 }
             }
-        }
+        }*/
     }
 
     void KeepTurret(TurretType type)
@@ -60,6 +61,20 @@ public class TurretManager : MonoBehaviour
         turret.Init(newLat, newLon);
 
         turrets.Add(turret);
+    }
+
+    void SpawnSpecificTurret(TurretType type, float newLat, float newLon)
+    {
+        Turret prefab = Resources.Load("MapTurret/" + type.ToString(), typeof(Turret)) as Turret;
+        Turret turret = Instantiate(prefab, Vector3.zero, Quaternion.identity) as Turret;
+        turret.tileManager = tileManager;
+        turret.Init(newLat, newLon);
+        turrets.Add(turret);
+    }
+
+    void SetupTurret()
+    {
+        SpawnSpecificTurret(TurretType.TURRET1, (float)18.78872, (float)98.9992);
     }
 
     public void UpdateTurretPosition()

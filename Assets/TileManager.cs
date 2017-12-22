@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-//
+using UnityEngine.UI;
 using System;
 using System.Collections;
 
@@ -18,6 +18,7 @@ public class TileManager : MonoBehaviour
     [SerializeField]
     private GameObject service;
 
+    public Text locationText;
     private float oldLat = 0f, oldLon = 0f;
     private float lat = 0f, lon = 0f;
 
@@ -96,6 +97,7 @@ public class TileManager : MonoBehaviour
 
         lat = Input.location.lastData.latitude;
         lon = Input.location.lastData.longitude;
+        locationText.text = "lat:" + lat + " lon:" + lon;
 
         // string url = String.Format("https://api.mapbox.com/v4/mapbox.{5}/{0},{1},{2}/{3}x{3}@2x.png?access_token={4}", lon, lat, zoom, size, key, style);
         string url = String.Format("https://api.mapbox.com/styles/v1/mapbox/light-v9/static/{0},{1},{2},0/{3}x{3}@2x?access_token=pk.eyJ1IjoidGF5dGF5MjYwNyIsImEiOiJjamJnODBvZ3QyemZrMnlsbHB1aDFyemppIn0.prfpdLy7t5PDM3WfFsULHA", lon, lat, zoom,size);
