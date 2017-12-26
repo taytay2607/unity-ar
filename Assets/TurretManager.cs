@@ -24,7 +24,7 @@ public class TurretManager : MonoBehaviour
         {
             waitSpawnTime = Time.time + UnityEngine.Random.Range(minIntervalTime, maxIntervalTime);
             SpawnTurret();
-        }
+        }*/
 
         if (Input.touchCount == 1 && Input.GetTouch(0).phase == TouchPhase.Stationary)
         {
@@ -39,14 +39,14 @@ public class TurretManager : MonoBehaviour
                     KeepTurret(turret.turretType);
                 }
             }
-        }*/
+        }
     }
 
     void KeepTurret(TurretType type)
     {
         string t = type.ToString();
         PlayerPrefs.SetString("TURRET_KEY", t);
-        SceneManager.LoadScene("Catch");
+        SceneManager.LoadScene("ar");
     }
 
     void SpawnTurret()
