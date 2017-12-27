@@ -75,6 +75,7 @@ public class TurretManager : MonoBehaviour
     void SetupTurret()
     {
         SpawnSpecificTurret(TurretType.TURRET1, (float)18.78872, (float)98.9992);
+        SpawnSpecificTurret(TurretType.TURRET2, (float)18.78873, (float)98.9993);
     }
 
     public void UpdateTurretPosition()
