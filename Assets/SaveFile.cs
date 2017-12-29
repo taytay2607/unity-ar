@@ -18,7 +18,7 @@ public class SaveFile : MonoBehaviour
     {
         current = this;
         file = Application.persistentDataPath + file;
-
+        //make dummy player name
         playerInfo = new PlayerInfo("Ashe");
         ReadFromJson();
     }
@@ -39,15 +39,18 @@ public class SaveFile : MonoBehaviour
 
     //save player's new turret
     public void addNewTurret() {
+
         //find GameObj that have TurretSpawner script
         Log("gointo addNewTurret");
         GameObject g = GameObject.Find("ZoomObj");
         Log("Find TurretSp"+g);
         TurretSpawner tScript = g.GetComponent<TurretSpawner>();
         Log("turret:"+ tScript.getTurret().GetComponent<Turret>().turretType);
+
         //add new turret in to List
         playerInfo.AddTurret(tScript.getTurret().GetComponent<Turret>().turretType, 1);
         Log("before save in json");
+
         //save to json file
         SaveToJson();
         Log("eiei");
@@ -78,10 +81,12 @@ public class SaveFile : MonoBehaviour
         playerInfo = JsonUtility.FromJson<PlayerInfo>(f);
         playerInfo.Unzip();
 
+        //display json 
         Log(file + " has been loaded!");
         Log("Contents: \n" + JsonUtility.ToJson(playerInfo));
-        Log("TurretList:");
 
+        //display turret log on screen 
+        Log("TurretList:");
         List<TurretInfo> turrets = playerInfo.getList();
         for (int i = 0; i < turrets.Count; i++)
         {
@@ -105,18 +110,17 @@ public class PlayerInfo
 {
     private List<TurretInfo> turrets;
     public string name;
-    public int level;
-    public float experience;
-    public float expNeeded;
+    //public int level;
+    //public float experience;
+    //public float expNeeded;
     public string pstring;
 
     public PlayerInfo(string name, int level = 1, float experience = 0f)
     {
         this.name = name;
-        this.level = level;
-        this.experience = experience;
-
-        this.expNeeded = (this.level + 1) * 50f;
+        //this.level = level;
+        //this.experience = experience;
+        //this.expNeeded = (this.level + 1) * 50f;
         this.turrets = new List<TurretInfo>();
     }
 
@@ -152,14 +156,15 @@ public class PlayerInfo
         {
             this.turrets.Add(p);
         }
-        else
+        /*else
         {
-            r.AddCookies(cookies + 1);
-            if (r.level < level)
-            {
-                r.level = level;
-            }
-        }
+             r.AddCookies(cookies + 1);
+             if (r.level < level)
+             {
+                 r.level = level;
+             }
+            
+        }*/
 
         this.Prepare();
     }
@@ -187,33 +192,33 @@ public class PlayerInfo
 public class TurretInfo
 {
     public TurretType type;
-    public int level;
-    public int cookies;
-    public float experience;
-    public float expNeeded;
+    //public int level;
+    //public int cookies;
+    //public float experience;
+    //public float expNeeded;
 
     public TurretInfo(TurretType type, int level, int cookies = 3, float experience = 0f)
     {
         this.type = type;
-        this.level = level;
-        this.cookies = cookies;
-        this.experience = experience;
-        this.expNeeded = (this.level + 1) * 50f;
+        //this.level = level;
+        //this.cookies = cookies;
+        //this.experience = experience;
+        //this.expNeeded = (this.level + 1) * 50f;
     }
 
     public void AddExperience(float exp)
     {
-        experience += exp;
+        /*experience += exp;
         if (experience > expNeeded)
         {
             float rest = experience - expNeeded;
             experience = rest;
             level++;
-        }
+        }*/
     }
 
     public void AddCookies(int cookies)
     {
-        this.cookies += cookies;
+        //this.cookies += cookies;
     }
 }
